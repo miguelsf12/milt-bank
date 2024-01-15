@@ -1,5 +1,4 @@
 require('dotenv').config()
-console.log(process.env)
 
 const express = require('express')
 const exphbs = require('express-handlebars')
@@ -13,6 +12,7 @@ const AuthController = require('./controllers/AuthController')
 
 // Conexão
 const conn = require('./db/conn') // Conexão
+const sequelize = require('./db/conn')
 
 const app = express()
 
@@ -78,11 +78,16 @@ app.get('/login', AuthController.login)
 // app.get('/reedem', AuthController.reedem)
 // app.post('/reedem', AuthController.reedemPost)
 
-conn
-  // .sync({ force: true })
-  .sync()
-  .then(() => {
-    app.listen(3000)
-  }).catch((err) => {
-    console.log(err)
-  })
+// conn
+//   // .sync({ force: true })
+//   .sync()
+//   .then(() => {
+//     app.listen(3000 || process.env.PORT)
+//   }).catch((err) => {
+//     console.log(err)
+//   })
+
+sequelize.sync()
+app.listen(3000 || process.env.PORT, () => {
+  console.log('Conectado com sucesso')
+})
