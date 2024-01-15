@@ -1,0 +1,373 @@
+:root {
+  --laranja: #F28907;
+  --azul: #1F2440;
+  --cinza: #E0E0E0;
+  --branco: #FFF;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--laranja);
+  padding: 40px;
+  width: 100vw;
+  height: 100%;
+  /* max-width: 430px;
+  max-height: 932px; */
+  flex-shrink: 0;
+}
+
+
+
+
+/* HOME */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* 
+  padding: 40px;
+  width: 100vw;
+  height: 100%;
+  max-width: 430px;
+  max-height: 932px;
+  flex-shrink: 0;
+  background-color: var(--laranja); */
+}
+
+.containerMessage {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 40%;
+  z-index: 999999;
+  width: 100%;
+  height: auto;
+  padding: 40px;
+}
+
+.messageErro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--laranja);
+  background-color: var(--cinza);
+  text-align: center;
+  border-radius: 50px;
+  padding: 20px;
+  font-size: 1.3em;
+  font-weight: 900;
+}
+
+.btn-hide {
+  border: none;
+  border-radius: 50px;
+  color: var(--laranja);
+  background-color: var(--branco);
+  width: 200px;
+  height: 74px;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.carousel-item.home,
+.carousel-item.home img {
+  /* width: 18.75em;
+  height: 18.75em; */
+  width: 90%;
+  height: 90%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.copy-title {
+  width: 270px;
+  color: var(--branco);
+  text-align: justify;
+  font-size: 2.5em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin: 0px;
+}
+
+.copy-subtitle {
+  width: 267px;
+  color: var(--branco);
+  font-size: 1.5625em;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  margin: 0px;
+}
+
+#carouselExampleSlidesOnly {
+  margin: 30px 0px 50px 0px;
+}
+
+.login-register a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  width: 266px;
+  height: 70px;
+  flex-shrink: 0;
+  border-radius: 166px;
+  background: var(--azul);
+  color: var(--branco);
+  font-size: 1.5625em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin-bottom: 20px;
+}
+
+.miss-account {
+  width: 270px;
+  height: 48px;
+  flex-shrink: 0;
+  color: var(--branco);
+  text-align: justify;
+  font-size: 1.5em;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+
+.miss-account a {
+  color: var(--branco);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+}
+
+/* REGISTER */
+
+.btn-back,
+.btn-back i,
+.btn-back span {
+  text-decoration: none;
+  color: var(--branco);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.btn-back i {
+  margin-right: 15px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  width: 16.875em;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+input[name="name"],
+input[name="birth_date"] {
+  padding: 25px;
+  margin-bottom: 35px;
+  width: 100%;
+  height: 74px;
+  border-radius: 50px;
+  border: none;
+  text-decoration: none;
+
+  border-radius: 100px;
+  background: var(--azul);
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+::-webkit-calendar-picker-indicator {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  filter: invert(1) brightness(100%) saturate(100%);
+}
+
+.carousel-btn-next,
+.carousel-btn-prev,
+.btn-login,
+.btn-register {
+  border-radius: 50px;
+  background: var(--branco);
+  width: 100%;
+  height: 74px;
+  padding: 25px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  border: none;
+
+  color: var(--laranja);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.imageRegister {
+  width: 300px;
+  height: 300px;
+}
+
+/* REGISTER STAGE2 */
+
+.form-control.stage2 {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 25px;
+  background: var(--azul);
+  height: 17.75em;
+  margin-bottom: 20px;
+}
+
+input[name="cpf"],
+input[name="email"],
+input[name="password"],
+input[name="confirmPassword"] {
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  flex-shrink: 0;
+  border: none;
+  border-bottom: 1px solid var(--branco);
+  background: rgba(255, 255, 255, 0.00);
+  margin-bottom: 15px;
+}
+
+.other-options {
+  display: flex;
+  float: right;
+  color: var(--branco);
+  font-size: 1.0625em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+/* LOGIN */
+
+.form-control.login input[name="password"],
+.form-control.login input[name="cpf"] {
+  padding: 25px;
+  margin-bottom: 35px;
+  width: 100%;
+  height: 74px;
+  border-radius: 50px;
+  border: none;
+  text-decoration: none;
+
+  border-radius: 100px;
+  background: var(--azul);
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.other {
+  display: flex;
+  flex-direction: row;
+  color: #FFF;
+  column-gap: 10px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.other.login .other-options {
+  width: 165px;
+}
+
+/* REEDEM PASSWORD */
+
+.container.reedem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.disclaimer {
+  font-size: 2.1875em;
+  width: 270px;
+  color: var(--branco);
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  margin-top: 20px;
+  border-left: 5px solid var(--branco);
+  padding-left: 10px;
+}
+
+.form-control.reedem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.reedem input[name="cpf"],
+.reedem input[name="password"],
+.reedem input[name="email"] {
+  padding: 25px;
+  margin-bottom: 35px;
+  width: 100%;
+  height: 74px;
+  border-radius: 50px;
+  border: none;
+  text-decoration: none;
+
+  border-radius: 100px;
+  background: var(--azul);
+  color: rgba(255, 255, 255, 0.50);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.btn-reedem {
+  border-radius: 50px;
+  background: var(--branco);
+  width: 100%;
+  height: 74px;
+  padding: 25px;
+  flex-shrink: 0;
+  border: none;
+
+  color: var(--laranja);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
