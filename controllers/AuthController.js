@@ -46,6 +46,7 @@ module.exports = class AuthController {
       email,
       password: hashedPassword
     }
+
     console.log(user)
 
     try {
@@ -89,36 +90,22 @@ module.exports = class AuthController {
   }
 
   static async reedemPasswordPost(req, res) {
-    const { name, birth_date, cpf, email } = req.body
+    const { name, cpf, email, newPassword } = req.body
+
+    const salt = bcrypt.genSaltSync(10)
+    const hashedPassword = bcrypt.hashSync(newPassword, salt)
 
     // Formulario
     const user = {
-      name,
-      birth_date,
-      cpf,
-      email
+      password: hashedPassword
     }
 
-    const userDb = await User.findOne({ where: { name: name, birth_date: birth_date, cpf: cpf, email: email } })
-    // PROCURAR POR CPF E EMAIL APENAS E TALVEZ COMPARAR OBJETOS
-
-    if (!userDb) {
-      console.log('user nao encontrado')
-      res.render('auth/login')
-      return
+    try {
+      await User.update(user, { where: { cpf: cpf } })
+      console.log('Senha alterada com sucesso')
+      res.redirect('/login')
+    } catch (error) {
+      console.log(error)
     }
-
-    res.redirect('/reedem')
-  }
-
-  static reedem(req, res) {
-    res.render('auth/reedem')
-  }
-
-  static reedemPost(req, res) {
-    const { password } = req.body
-
-    // trocar a senha e enviar para o DB
-    res.redirect('/login')
   }
 }

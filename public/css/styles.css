@@ -338,6 +338,7 @@ input[name="confirmPassword"] {
 
 .reedem input[name="cpf"],
 .reedem input[name="password"],
+input[name="newPassword"],
 .reedem input[name="email"] {
   padding: 25px;
   margin-bottom: 35px;

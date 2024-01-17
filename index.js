@@ -73,21 +73,23 @@ app.get('/login', AuthController.login)
 // app.get('/register', AuthController.register)
 // app.post('/register', AuthController.registerPost)
 // app.post('/login', AuthController.loginPost)
-// app.get('/reedem-password', AuthController.reedemPassword)
+app.get('/reedem-password', AuthController.reedemPassword)
 // app.post('/reedem-password', AuthController.reedemPasswordPost)
 // app.get('/reedem', AuthController.reedem)
 // app.post('/reedem', AuthController.reedemPost)
 
-// conn
-//   // .sync({ force: true })
-//   .sync()
-//   .then(() => {
-//     app.listen(3000 || process.env.PORT)
-//   }).catch((err) => {
-//     console.log(err)
-//   })
+// LOCALHOST
+conn
+  // .sync({ force: true })
+  .sync()
+  .then(() => {
+    app.listen(3000 || process.env.PORT)
+  }).catch((err) => {
+    console.log(err)
+  })
 
-sequelize.sync()
-app.listen(3000 || process.env.PORT, () => {
-  console.log('Conectado com sucesso')
-})
+// RAILWAY
+// sequelize.sync()
+// app.listen(3000 || process.env.PORT, () => {
+//   console.log('Conectado com sucesso')
+// })
