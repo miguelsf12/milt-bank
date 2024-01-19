@@ -19,7 +19,6 @@ module.exports = class HomeController {
     const dataUser = data.dataValues
     const amount = data.dataValues.amount
 
-    console.log(amount)
     res.render('milt/home', { layout: 'miltHome', username, amount })
   }
 }

@@ -8,6 +8,7 @@ const flash = require('express-flash')
 // Routes
 const authRoutes = require('./routes/authRoutes')
 const homeRoutes = require('./routes/homeRoutes')
+const apiRoutes = require('./routes/apiRoutes')
 
 // Controllers
 const AuthController = require('./controllers/AuthController')
@@ -72,6 +73,7 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('milt/home', homeRoutes)
+app.use('/', apiRoutes)
 app.use('/', authRoutes)
 
 app.get('/milt/home', HomeController.home)
