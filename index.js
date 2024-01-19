@@ -87,17 +87,17 @@ app.get('/reedem-password', AuthController.reedemPassword)
 // app.post('/reedem-password', AuthController.reedemPasswordPost)
 
 // LOCALHOST
-conn
-  // .sync({ force: true })
-  .sync()
-  .then(() => {
-    app.listen(3000 || process.env.PORT)
-  }).catch((err) => {
-    console.log(err)
-  })
+// conn
+//   // .sync({ force: true })
+//   .sync()
+//   .then(() => {
+//     app.listen(3000 || process.env.PORT)
+//   }).catch((err) => {
+//     console.log(err)
+//   })
 
 // RAILWAY
-// sequelize.sync()
-// app.listen(3000 || process.env.PORT, () => {
-//   console.log('Conectado com sucesso')
-// })
+sequelize.sync({ force: true })
+app.listen(3000 || process.env.PORT, () => {
+  console.log('Conectado com sucesso')
+})
