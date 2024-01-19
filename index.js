@@ -97,7 +97,7 @@ app.get('/reedem-password', AuthController.reedemPassword)
 //   })
 
 // RAILWAY
-sequelize.sync({ force: true })
+sequelize.sync()
 app.listen(3000 || process.env.PORT, () => {
   console.log('Conectado com sucesso')
 })
