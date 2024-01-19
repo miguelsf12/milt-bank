@@ -1,0 +1,25 @@
+<div class="container">
+  <header>
+    <nav>
+      <div class="logoImage">
+        <img src="/images/miltlogo-p.png" alt="Logo Milt Bank">
+      </div>
+      <i id="toggleButton" class="bi bi-eye"></i>
+      {{!-- <i class="hidden" class="bi bi-eye-slash"></i> --}}
+      <div class="dropdown-center">
+        <i class="bi bi-three-dots-vertical" data-bs-toggle="dropdown" aria-expanded="false"></i>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Action two</a></li>
+          <li><a class="dropdown-item" href="#">Action three</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="content">
+      <div class="transactions">
+        <p>R$ <span id="amount">{{amount}}</span></p>
+        <p><span id="amount">{{username}}</span></p>
+      </div>
+    </div>
+  </header>
+</div>

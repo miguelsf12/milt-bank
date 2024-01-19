@@ -5,15 +5,22 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const flash = require('express-flash')
+// Routes
 const authRoutes = require('./routes/authRoutes')
+const homeRoutes = require('./routes/homeRoutes')
 
 // Controllers
 const AuthController = require('./controllers/AuthController')
+const HomeController = require('./controllers/HomeController')
+
 
 // Conexão
 const conn = require('./db/conn') // Conexão
 const sequelize = require('./db/conn')
 
+// Models
+const User = require('./models/Users')
+const Data = require('./models/Data')
 const app = express()
 
 // Template engine
@@ -64,19 +71,18 @@ app.use((req, res, next) => {
 })
 
 // Routes
-
+app.use('milt/home', homeRoutes)
 app.use('/', authRoutes)
 
+app.get('/milt/home', HomeController.home)
 app.get('/', AuthController.welcome)
 app.get('/login', AuthController.login)
+app.get('/reedem-password', AuthController.reedemPassword)
 
 // app.get('/register', AuthController.register)
 // app.post('/register', AuthController.registerPost)
 // app.post('/login', AuthController.loginPost)
-app.get('/reedem-password', AuthController.reedemPassword)
 // app.post('/reedem-password', AuthController.reedemPasswordPost)
-// app.get('/reedem', AuthController.reedem)
-// app.post('/reedem', AuthController.reedemPost)
 
 // LOCALHOST
 conn

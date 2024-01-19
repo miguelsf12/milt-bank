@@ -14,7 +14,5 @@ router.get('/login', AuthController.login)
 router.post('/login', AuthController.loginPost)
 router.get('/reedem-password', AuthController.reedemPassword)
 router.post('/reedem-password', AuthController.reedemPasswordPost)
-// router.get('/reedem', AuthController.reedem)
-// router.post('/reedem', AuthController.reedemPost)
 
 module.exports = router

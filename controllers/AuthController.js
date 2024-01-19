@@ -83,6 +83,11 @@ module.exports = class AuthController {
     }
 
     // INICIALIZAR A SEÇÃO DA PESSOA
+    req.session.userid = user.id
+    // console.log(req.session.userid)
+    req.session.save(() => {
+      res.redirect('milt/home')
+    })
   }
 
   static reedemPassword(req, res) {
@@ -102,8 +107,8 @@ module.exports = class AuthController {
 
     try {
       await User.update(user, { where: { cpf: cpf } })
-      console.log('Senha alterada com sucesso')
-      res.redirect('/login')
+      req.flash('messageLogin', 'Senha alterada com sucesso!')
+      res.render('auth/login')
     } catch (error) {
       console.log(error)
     }

@@ -1,0 +1,34 @@
+:root {
+  --laranja: #F28907;
+  --azul: #1F2440;
+  --cinza: #E0E0E0;
+  --branco: #FFF;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--branco);
+  padding: 40px;
+  width: 100vw;
+  height: 100%;
+  /* max-width: 430px;
+  max-height: 932px; */
+  flex-shrink: 0;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bi.bi-three-dots-vertical {
+  font-size: 32px;
+}
