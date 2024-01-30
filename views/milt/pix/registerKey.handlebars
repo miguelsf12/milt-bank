@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-4">
+    <a href="/milt/pix" class="btn-back"><i class="bi bi-caret-left-fill"></i>Voltar</a>
+  </div>
+</div>
+<div class="containerPixPay">
+  <div class="containerMessage">
+    {{#if messages.messageRegisterPix}}
+    <div class="messageErro" id="errorDiv">
+      {{messages.messageRegisterPix}}
+      <button class="btn-hide" id="hideButton">FECHAR</button>
+    </div>
+    {{/if}}
+  </div>
+  <form action="/milt/pix/registerKey" method="POST">
+    <div class="form-control register-Key">
+      <input type="text" name="pix" placeholder="Insira sua chave cpf ou email" required>
+      <input class="btn-registerKey" type="submit" value="CADASTRAR">
+    </div>
+  </form>
+</div>

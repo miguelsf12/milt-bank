@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <a href="/milt/home" class="btn-back"><i class="bi bi-caret-left-fill"></i>Voltar</a>
+    </div>
+    <div class="col-4">
+      <p class="text-header-pix">Pix</p>
+
+    </div>
+  </div>
+  <div class="row pix">
+    <div class="col-4">
+      <a href="/milt/pix/registerKey" class="registerKeyLink">
+        <div class="registerKey">
+          <i class="bi bi-key"></i>
+          <p class="textFinanceType">Cadastrar pix</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-4">
+      <a href="" class="registerKeyLink">
+        <div class="registerKey">
+          <i class="bi bi-key"></i>
+          <p class="textFinanceType">Extrato completo</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-4">
+      <a href="" class="registerKeyLink">
+        <div class="registerKey">
+          <i class="bi bi-key"></i>
+          <p class="textFinanceType">Configurações</p>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="containerPix">
+    <div class="row pay">
+      <a class="payPix" href="/milt/pix/pagar">
+        <p>Pagar</p>
+        <i class="bi bi-cash-coin"></i>
+      </a>
+    </div>
+    <div class="row receive">
+      <a class="receivePix" href="/milt/pix/receber">
+        <p>Receber</p>
+        <i class="bi bi-cash-coin"></i>
+      </a>
+    </div>
+  </div>
+  <div class="myKeys">
+    <p>Minhas chaves</p>
+    <div class="key">
+      {{keyPix}}
+    </div>
+  </div>
+  <div class="transactions" style="margin-top: 40px;">
+    <p class="latestActions">Últimas ações</p>
+    {{!--Será adicionado uma div toda vez que houver uma ação--}}
+    <div class="transactionItems">
+      <div class="transactionItem">
+        <p class="transactionAmount">R$ <span>100,00</span></p>
+        <p class="transactionBeneficed">TELECOMUNICAÇÂO TESTE LTDA</p>
+      </div>
+    </div>
+  </div>
+</div>

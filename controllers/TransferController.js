@@ -9,6 +9,14 @@ module.exports = class TransferController {
   static async registerKeyPost(req, res) {
     const keyPix = req.body.pix
     const userId = req.session.userid
+    const user = await User.findOne({ where: { id: userId } })
+
+    console.log(user.cpf)
+
+    if (keyPix != user.cpf || keyPix != user.email) {
+      req.flash('messageRegisterPix', 'Chave inválida')
+      res.render('milt/pix/registerKey', { layout: 'miltHome' })
+    }
 
     try {
       await Data.update({ pix: keyPix }, { where: { UserId: userId } });
