@@ -12,8 +12,9 @@ module.exports = class TransferController {
     const user = await User.findOne({ where: { id: userId } })
 
     console.log(user.cpf)
+    // ARRUMAR VERIFICAÇÃO APARECE MENSAGEM MESMO INDO CERTO
 
-    if (keyPix != user.cpf || keyPix != user.email) {
+    if (keyPix !== user.cpf && keyPix !== user.email) {
       req.flash('messageRegisterPix', 'Chave inválida')
       res.render('milt/pix/registerKey', { layout: 'miltHome' })
     }
