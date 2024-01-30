@@ -1,6 +1,7 @@
 :root {
-  --laranja: #F28907;
+  --laranja: #FFA300;
   --azul: #1F2440;
+  --azul-escuro: #11111F;
   --cinza: #E0E0E0;
   --branco: #FFF;
 }
@@ -14,7 +15,7 @@
 
 body {
   background-color: var(--branco);
-  padding: 40px;
+  padding: 20px;
   width: 100vw;
   height: 100%;
   /* max-width: 430px;
@@ -27,6 +28,38 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.messageErro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--laranja);
+  background-color: var(--cinza);
+  text-align: center;
+  border-radius: 50px;
+  padding: 20px;
+  font-size: 1.3em;
+  font-weight: 900;
+}
+
+.btn-hide {
+  border: none;
+  border-radius: 50px;
+  color: var(--laranja);
+  background-color: var(--branco);
+  width: 200px;
+  height: 74px;
+  padding: 15px;
+  margin-top: 15px;
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.bg-body-tertiary {
+  --bs-bg-opacity: 0;
 }
 
 .bi.bi-three-dots-vertical {
@@ -52,7 +85,326 @@ nav {
 }
 
 #toggleButton {
-  position: relative;
-  left: 60px;
   font-size: 30px;
+  font-weight: 900;
+}
+
+.latestActions {
+  color: var(--azul-escuro);
+  font-size: 1.5625em;
+  font-weight: 300;
+}
+
+.transactionItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.transactionItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 78px;
+  border-radius: 21px;
+  padding: 20px;
+}
+
+.transactionItem:nth-child(odd) {
+  background: var(--cinza);
+}
+
+.transactionItem:nth-child(even) {
+  background: var(--branco);
+}
+
+.transactionAmount {
+  color: var(--azul-escuro);
+  text-align: justify;
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
+.transactionBeneficed {
+  width: 9.6875em;
+  color: var(--azul-escuro);
+  font-weight: 700;
+  /* margin-right: 20px; */
+  margin-left: 5px;
+  font-size: 0.8em;
+}
+
+.moreTransactions {
+  position: absolute;
+  bottom: -30px;
+  color: var(--branco);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 900;
+  width: 155px;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 50px;
+  background: var(--laranja);
+}
+
+.text-finances {
+  color: var(--azul-escuro);
+  font-size: 1.5em;
+  font-weight: 700;
+  background-color: #ffa2001a;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.finances {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9375em;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+.financeLink {
+  text-decoration: none;
+}
+
+.functionality {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 4.625em;
+  height: 4.25em;
+  border-radius: 21px;
+  background: var(--laranja);
+  padding: 0.625em;
+
+  margin-bottom: 80px;
+}
+
+.functionality i {
+  font-size: 2em;
+  color: var(--branco);
+}
+
+.pix img {
+  position: relative;
+  bottom: -5px;
+  width: 2.1875em;
+  height: 2.1875em;
+  object-fit: contain;
+}
+
+.pix .textFinanceType {
+  margin-top: 42px;
+}
+
+.textFinanceType {
+  margin-top: 30px;
+  color: var(--laranja);
+  text-align: center;
+  font-size: 1.125em;
+  font-weight: 700;
+}
+
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+    transform: translateX(250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.container.text-center {
+  background-color: #ffa2001a;
+  padding: 20px;
+  border-radius: 20px;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+.row.button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 3px;
+}
+
+.btn-close {
+  font-size: 32px;
+  float: right;
+}
+
+/* PIX */
+
+.btn-back,
+.btn-back i,
+.btn-back span {
+  text-decoration: none;
+  color: var(--azul);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.btn-back i {
+  margin-right: 15px;
+}
+
+.text-header-pix {
+  font-size: 1.5em;
+  font-weight: 900;
+  text-align: center;
+}
+
+.registerKeyLink {
+  text-decoration: none;
+}
+
+.registerKey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 74px;
+  height: 68px;
+  border-radius: 100px;
+  background: var(--laranja);
+  padding: 10px;
+
+  margin-bottom: 80px;
+}
+
+.registerKey i {
+  font-size: 32px;
+  color: var(--branco);
+}
+
+.containerPix {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.row.pix {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.row.pix .col-4 {
+  display: flex;
+  justify-content: center;
+}
+
+.row.pay {
+  margin-top: 70px;
+}
+
+.row.pay,
+.row.receive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 19px;
+  /* border: 2px solid var(--azul); */
+  background-color: #1F24401a;
+  width: 100%;
+  height: 75px;
+}
+
+.payPix,
+.receivePix {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: var(--azul);
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.bi-cash-coin {
+  font-size: 32px;
+  color: var(--azul);
+}
+
+.myKeys {
+  color: var(--azul);
+  font-size: 1.375em;
+  font-weight: 900;
+  margin-top: 30px;
+}
+
+.key {
+  width: 100%;
+  font-weight: 500;
+  background-color: #ffa2001a;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: justify;
+
+  font-size: .9em;
+}
+
+/* REGISTER KEY */
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  width: 16.875em;
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+}
+
+.containerPixPay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+input[name="pix"] {
+  padding: 25px;
+  margin-bottom: 35px;
+  width: 100%;
+  height: 74px;
+  border-radius: 20px;
+  border: 1px solid var(--azul-escuro);
+  color: var(--laranja);
+
+  background: var(--azul);
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+
+.btn-registerKey {
+  border-radius: 50px;
+  background: var(--laranja);
+  width: 100%;
+  height: 74px;
+  padding: 25px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  border: none;
+
+  color: var(--azul-escuro);
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
 }

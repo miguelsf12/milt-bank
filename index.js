@@ -9,6 +9,7 @@ const flash = require('express-flash')
 const authRoutes = require('./routes/authRoutes')
 const homeRoutes = require('./routes/homeRoutes')
 const apiRoutes = require('./routes/apiRoutes')
+const transfersRoutes = require('./routes/transfersRoutes')
 
 // Controllers
 const AuthController = require('./controllers/AuthController')
@@ -22,6 +23,7 @@ const sequelize = require('./db/conn')
 // Models
 const User = require('./models/Users')
 const Data = require('./models/Data')
+const TransferController = require('./controllers/TransferController')
 const app = express()
 
 // Template engine
@@ -42,7 +44,7 @@ app.use(
     name: 'session',
     secret: 'milt_secret',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: false, // certo é false
     store: new FileStore({
       log() { },
       path: require('path').join(require('os').tmpdir(), 'sessions'),
@@ -72,19 +74,23 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use('milt/home', homeRoutes)
+app.use('milt/pix/', transfersRoutes)
+app.use('milt/', homeRoutes)
 app.use('/', apiRoutes)
 app.use('/', authRoutes)
 
-app.get('/milt/home', HomeController.home)
 app.get('/', AuthController.welcome)
+app.get('/milt/home', HomeController.home)
 app.get('/login', AuthController.login)
+app.get('/milt/pix', HomeController.pix)
+app.get('/milt/pix/pagar',TransferController.pay)
+app.get('/milt/pix/registerKey',TransferController.registerKey)
+app.post('/milt/pix/registerKey',TransferController.registerKeyPost)
 app.get('/reedem-password', AuthController.reedemPassword)
-
-// app.get('/register', AuthController.register)
-// app.post('/register', AuthController.registerPost)
-// app.post('/login', AuthController.loginPost)
-// app.post('/reedem-password', AuthController.reedemPasswordPost)
+app.get('/register', AuthController.register)
+app.post('/register', AuthController.registerPost)
+app.post('/login', AuthController.loginPost)
+app.post('/reedem-password', AuthController.reedemPasswordPost)
 
 // LOCALHOST
 // conn
@@ -97,7 +103,7 @@ app.get('/reedem-password', AuthController.reedemPassword)
 //   })
 
 // RAILWAY
-sequelize.sync({force: true})
+sequelize.sync()
 app.listen(3000 || process.env.PORT, () => {
   console.log('Conectado com sucesso')
 })

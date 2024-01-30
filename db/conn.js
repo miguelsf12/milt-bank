@@ -10,12 +10,12 @@ const sequelize = new Sequelize({
   host: process.env.DB_HOST,
 })
 
-// // LOCALHOST
+// LOCALHOST
 // const sequelize = new Sequelize('miltbank', 'root', '', {
 //   host: 'localhost',
 //   dialect: 'mysql'
 // })
-// // LOCALHOST
+// LOCALHOST
 // try {
 //   sequelize.authenticate()
 //   console.log('Conectado com sucesso!')
