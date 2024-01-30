@@ -20,5 +20,17 @@ module.exports = class HomeController {
     const amount = data.dataValues.amount
 
     res.render('milt/home', { layout: 'miltHome', username, amount })
+
+    // DESCOMENTAR TUDO DEPOIS
+    // res.render('milt/home', { layout: 'miltHome' })
+  }
+
+  static async pix(req, res) {
+    const userId = req.session.userid
+    const dataUser = await Data.findOne({ where: { UserId: userId } })
+
+    const keyPix = dataUser.pix
+
+    res.render('milt/pix', { layout: 'miltHome', keyPix })
   }
 }
