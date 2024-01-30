@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const isVisible = !amountElement.classList.contains('hidden');
 
     if (isVisible) {
-      amountElement.textContent = ' •••';
+      amountElement.textContent = ' •••••';
       amountElement.classList.add('hidden');
       toggleButton.classList.remove('bi-eye');
       toggleButton.classList.add('bi-eye-slash');

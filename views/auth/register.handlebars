@@ -1,4 +1,4 @@
-<a href="/" class="btn-back"><i class="bi bi-arrow-left-circle"></i><span>Voltar</span></a>
+<a href="/" class="btn-back"><i class="bi bi-caret-left-fill"></i><span>Voltar</span></a>
 <div class="container">
   <div class="imageRegister">
     <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@
       <div class="carousel-item active">
         <div class="form-control">
           <input type="text" name="name" placeholder="NOME COMPLETO" required>
-          <input placeholder="DATA DE NASCIMENTO" name="birth_date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" required>
+          <input placeholder="DATA DE NASCIMENTO" name="birth_date" type="text" oninput="formatarData(this)" required>
 
           <button class="carousel-btn-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             CONTINUAR

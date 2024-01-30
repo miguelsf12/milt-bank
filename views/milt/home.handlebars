@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logoImage">
-        <img src="/images/miltlogo-p.png" alt="Logo Milt Bank">
+        <img src="/images/milt.png" alt="Logo Milt Bank">
       </div>
       <i id="toggleButton" class="bi bi-eye"></i>
       {{!-- <i class="hidden" class="bi bi-eye-slash"></i> --}}
@@ -15,12 +15,122 @@
         </ul>
       </div>
     </nav>
-    <div id="content">
+
+    <main id="content">
       <p class="username">Olá, {{username}}</p>
       <p class="amount">R$ <span id="amount">{{amount}}</span></p>
       <div class="transactions">
-        <p>Últimas ações</p>
+        <p class="latestActions">Últimas ações</p>
+        {{!--Será adicionado uma div toda vez que houver uma ação--}}
+        <div class="transactionItems">
+          <div class="transactionItem">
+            <p class="transactionAmount">R$ <span>100,00</span></p>
+            <p class="transactionBeneficed">TELECOMUNICAÇÂO TESTE LTDA</p>
+          </div>
+          <div class="transactionItem">
+            <p class="transactionAmount">R$ <span>534,00</span></p>
+            <p class="transactionBeneficed">SUPERMERCADO ****** LTDA</p>
+          </div>
+          <div class="transactionItem">
+            <p class="transactionAmount">R$ <span>10,00</span></p>
+            <p class="transactionBeneficed">FINANÇAS ONLINE E COMÉRCIO</p>
+          </div>
+          <div class="transactionItem">
+            <p class="transactionAmount">R$ <span>1320,00</span></p>
+            <p class="transactionBeneficed">CARSHOW AUTOMOVEIS</p>
+          </div>
+          <a class="moreTransactions" href="#">VER TUDO</a>
+        </div>
       </div>
-    </div>
-  </header>
+
+      <div class="functionalities">
+        <p class="text-finances">Finanças</p>
+        <div class="finances">
+          <a href="/milt/pix" class="financeLink">
+            <div class="pix functionality">
+              <img src="/images/pix.png" alt="logo pix">
+              <p class="textFinanceType">Pix</p>
+            </div>
+          </a>
+          <a href="" class="financeLink">
+            <div class="pay functionality">
+              <i class="bi bi-upc"></i>
+              <p class="textFinanceType">Pagar</p>
+            </div>
+          </a>
+          <a href="" class="financeLink">
+            <div class="card functionality">
+              <i class="bi bi-credit-card"></i>
+              <p class="textFinanceType">Cartões</p>
+            </div>
+          </a>
+          <div class="show-more functionality" id="showMoreBtn">
+            <i class="bi bi-three-dots"></i>
+            <p class="textFinanceType">Mostrar mais</p>
+          </div>
+        </div>
+
+        <div id="expandedFinance" class="container text-center" style="display: none;">
+          <div class="row button">
+            <button type="button" class="btn-close" id="closeBtn" aria-label="Close"></button>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <a href="" class="financeLink">
+                <div class="pix functionality">
+                  <img src="/images/pix.png" alt="logo pix">
+                  <p class="textFinanceType">Pix</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-3">
+              <a href="" class="financeLink">
+            <div class="pay functionality">
+              <i class="bi bi-upc"></i>
+              <p class="textFinanceType">Pagar</p>
+            </div>
+          </a>
+            </div>
+            <div class="col-3">
+              <a href="" class="financeLink">
+                <div class="card functionality">
+                  <i class="bi bi-credit-card"></i>
+                  <p class="textFinanceType">Cartões</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-3">
+              <a href="" class="financeLink">
+                <div class="card functionality">
+                  <i class="bi bi-credit-card"></i>
+                  <p class="textFinanceType">Transferir</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-3">
+              <a href="" class="financeLink">
+                <div class="card functionality">
+                  <i class="bi bi-credit-card"></i>
+                  <p class="textFinanceType">Câmbio</p>
+                </div>
+              </a>
+            </div>
+            <div class="col-3">
+              <a href="" class="financeLink">
+                <div class="card functionality">
+                  <i class="bi bi-credit-card"></i>
+                  <p class="textFinanceType">Cartões</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+</div>
+</main>
+</div>
+</header>
 </div>
