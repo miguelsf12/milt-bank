@@ -14,6 +14,15 @@ module.exports = class AuthController {
   static async registerPost(req, res) {
     const { name, birth_date, cpf, email, password, confirmPassword } = req.body
 
+    // Verifica se o CPF está no formato correto
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+    if (!cpfRegex.test(cpf)) {
+      req.flash('messageRegister', 'Formato de CPF inválido! Utilize o formato 000.000.000-00')
+      res.render('auth/register')
+      return
+    }
+
+
     const checkIfEmailExists = await User.findOne({ where: { email: email } })
 
     if (checkIfEmailExists) {
