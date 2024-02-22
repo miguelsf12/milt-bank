@@ -1,5 +1,6 @@
 const User = require('../models/Users')
 const bcrypt = require('bcryptjs')
+const { badRequest, serverError } = require('../helpers/errorHandler')
 
 module.exports = class AuthController {
   static welcome(req, res) {
@@ -12,58 +13,52 @@ module.exports = class AuthController {
 
   // se não possui um usuario com os mesmos dados
   static async registerPost(req, res) {
-    const { name, birth_date, cpf, email, password, confirmPassword } = req.body
-
-    // Verifica se o CPF está no formato correto
-    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-    if (!cpfRegex.test(cpf)) {
-      req.flash('messageRegister', 'Formato de CPF inválido! Utilize o formato 000.000.000-00')
-      res.render('auth/register')
-      return
-    }
-
-
-    const checkIfEmailExists = await User.findOne({ where: { email: email } })
-
-    if (checkIfEmailExists) {
-      req.flash('messageRegister', 'Este e-mail já está em uso!')
-      res.render('auth/register')
-      return
-    }
-
-    const checkIfUserExists = await User.findOne({ where: { cpf: cpf } })
-
-    if (checkIfUserExists) {
-      req.flash('messageRegister', 'Este CPF já está cadastrado!')
-      res.render('auth/register')
-      return
-    }
-
-    if (password != confirmPassword) {
-      req.flash('messageRegister', 'As senhas não conferem, tente novamente!')
-      res.render('auth/register')
-      return
-    }
-
-    const salt = bcrypt.genSaltSync(10)
-    const hashedPassword = bcrypt.hashSync(password, salt)
-
-    const user = {
-      name,
-      birth_date,
-      cpf,
-      email,
-      password: hashedPassword
-    }
-
-    console.log(user)
-
     try {
+      const { name, birth_date, cpf, email, password, confirmPassword } = req.body
+
+      // Verifica se o CPF está no formato correto
+      const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+
+      if (!cpfRegex.test(cpf)) {
+        return badRequest(req, res, 'Formato de CPF inválido! Utilize o formato 000.000.000-00', 'messageRegister', 'auth/register')
+      }
+
+      const checkIfEmailExists = await User.findOne({ where: { email: email } })
+
+      if (checkIfEmailExists) {
+        return badRequest(req, res, 'Este e-mail já está em uso!', 'messageRegister', 'auth/register');
+      }
+
+      const checkIfUserExists = await User.findOne({ where: { cpf: cpf } })
+
+      if (checkIfUserExists) {
+        return badRequest(req, res, 'Este CPF já está cadastrado!', 'messageRegister', 'auth/register')
+      }
+
+      if (password != confirmPassword) {
+        return badRequest(req, res, 'As senhas não conferem, tente novamente!', 'messageRegister', 'auth/register')
+      }
+
+      const salt = bcrypt.genSaltSync(10)
+      const hashedPassword = bcrypt.hashSync(password, salt)
+
+      const user = {
+        name,
+        birth_date,
+        cpf,
+        email,
+        password: hashedPassword
+      }
+
+      console.log(user)
+
+
       await User.create(user)
       req.flash('messageLogin', 'Sua conta foi criada com sucesso!')
       res.redirect('/login')
     } catch (error) {
-      console.log(`Houve um erro: ${error}`)
+      console.log(`Houve um erro: ${error}`);
+      return serverError(res);
     }
   }
 
@@ -72,31 +67,32 @@ module.exports = class AuthController {
   }
 
   static async loginPost(req, res) {
-    const { cpf, password } = req.body
+    try {
+      const { cpf, password } = req.body
 
-    // find user
-    const user = await User.findOne({ where: { cpf: cpf } })
+      // find user
+      const user = await User.findOne({ where: { cpf: cpf } })
 
-    if (!user) {
-      req.flash('messageLogin', 'Usuário não encontrado!')
-      res.render('auth/login')
-      return
+      if (!user) {
+        return badRequest(req, res, 'Usuário não encontrado!', 'messageLogin', 'auth/login')
+      }
+
+      const passwordMatch = bcrypt.compareSync(password, user.password)
+
+      if (!passwordMatch) {
+        return badRequest(req, res, 'Senha inválida!', 'messageLogin', 'auth/login')
+      }
+
+      // INICIALIZAR A SEÇÃO DA PESSOA
+      req.session.userid = user.id
+      // console.log(req.session.userid)
+      req.session.save(() => {
+        res.redirect('milt/home')
+      })
+    } catch (error) {
+      console.log(`Houve um erro: ${error}`);
+      return serverError(res);
     }
-
-    const passwordMatch = bcrypt.compareSync(password, user.password)
-
-    if (!passwordMatch) {
-      req.flash('messageLogin', 'Senha inválida!')
-      res.render('auth/login')
-      return
-    }
-
-    // INICIALIZAR A SEÇÃO DA PESSOA
-    req.session.userid = user.id
-    // console.log(req.session.userid)
-    req.session.save(() => {
-      res.redirect('milt/home')
-    })
   }
 
   static reedemPassword(req, res) {
@@ -104,22 +100,23 @@ module.exports = class AuthController {
   }
 
   static async reedemPasswordPost(req, res) {
-    const { name, cpf, email, newPassword } = req.body
-
-    const salt = bcrypt.genSaltSync(10)
-    const hashedPassword = bcrypt.hashSync(newPassword, salt)
-
-    // Formulario
-    const user = {
-      password: hashedPassword
-    }
-
     try {
+      const { name, cpf, email, newPassword } = req.body
+
+      const salt = bcrypt.genSaltSync(10)
+      const hashedPassword = bcrypt.hashSync(newPassword, salt)
+
+      // Formulario
+      const user = {
+        password: hashedPassword
+      }
+
       await User.update(user, { where: { cpf: cpf } })
       req.flash('messageLogin', 'Senha alterada com sucesso!')
       res.render('auth/login')
     } catch (error) {
-      console.log(error)
+      console.log(`Houve um erro: ${error}`);
+      return serverError(res);
     }
   }
 }
