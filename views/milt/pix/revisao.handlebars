@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <a href="/milt/pix" class="btn-back"><i class="bi bi-caret-left-fill"></i>Voltar</a>
+    </div>
+    <div class="col-4">
+      <p class="text-header-pix-pay">Revisar</p>
+    </div>
+  </div>
+  <div class="containerAmount" style="margin-bottom: 40px;">
+    <div class="rowAmount">
+      <p class="amountPay" style="margin-bottom: 0px;">Saldo</p>
+      <p class="amountPay" style="margin-bottom: 0px;">R$ <span id="amount">{{userPayer.amount}}</span></p>
+      <i id="toggleButton" class="bi bi-eye hideAmountPay"></i>
+    </div>
+  </div>
+  <div class="containerPixPayConfirm">
+    <form action="/milt/pix/revisao" method="POST">
+      <div class="control">
+        <label for="amountPay">R$</label>
+        <input type="text" name="amount" id="amountPay" value="{{amountToPay}}" readonly>
+      </div>
+      <div class="receiverContainer">
+        <div class="receiver">
+          <p>Recebedor</p>
+        </div>
+        <div class="receiverName">
+          <p>Nome</p><span>{{userReceiver.name}}</span>
+        </div>
+        <div class="receiverCpf">
+          <p>CPF</p><span>{{userReceiver.cpf}}</span>
+        </div>
+        <div class="receiverInstitution">
+          <p>Instituição</p><span>Milt Bank S.A</span>
+        </div>
+        <div class="receiverKey">
+          <p>Chave</p><span>{{userReceiver.key}}</span>
+        </div>
+      </div>
+
+      <div class="payerContainer">
+        <div class="payer">
+          <p>Pagador</p>
+        </div>
+        <div class="payerName">
+          <p>Nome</p><span>{{userPayer.name}}</span>
+        </div>
+        <div class="payerCpf">
+          <p>CPF</p><span>{{userPayer.cpf}}</span>
+        </div>
+        <div class="payerInstitution">
+          <p>Instituição</p><span>Milt Bank S.A</span>
+        </div>
+      </div>
+      <input type="hidden" name="key" value="{{userReceiver.key}}">
+      <input class="btn-payPix" type="submit" value="CONTINUAR">
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <a href="/milt/pix/pagar" class="btn-back"><i class="bi bi-caret-left-fill"></i>Voltar</a>
+    </div>
+    <div class="col-4">
+      <p class="text-header-pix-pay">Pagar Com Pix</p>
+    </div>
+  </div>
+  <div class="containerAmount">
+    <div class="rowAmount">
+      <p class="amountPay" style="margin-bottom: 0px;">Saldo</p>
+      <p class="amountPay" style="margin-bottom: 0px;">R$ <span id="amount">{{amountUser}}</span></p>
+      <i id="toggleButton" class="bi bi-eye hideAmountPay"></i>
+    </div>
+  </div>
+  <div class="row pix">
+    <div class="col-4">
+      <i class="pay-pix bi bi-cash-coin"></i>
+    </div>
+  </div>
+
+  <div class="containerMessage">
+    {{#if messages.messageAmount}}
+    <div class="messageErro" id="errorDiv">
+      {{messages.messageAmount}}
+      <button class="btn-hide" id="hideButton">FECHAR</button>
+    </div>
+    {{/if}}
+  </div>
+  <p class="payPixConfirm">Pagar {{user.name}}</p>
+  <div class="containerPixPayConfirm">
+    <form action="/milt/pix/confirmarPagamento" method="POST">
+      <div class="control">
+        <label for="amountPay">R$</label>
+        <input type="text" name="amount" id="amountPay" value="00,00">
+        <input type="hidden" name="key" value="{{user.key}}">
+      </div>
+      <input class="btn-payPix" type="submit" value="CONTINUAR">
+    </form>
+  </div>
+</div>

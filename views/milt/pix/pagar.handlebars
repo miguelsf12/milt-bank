@@ -1,3 +1,32 @@
-<div class="alert alert-warning" role="alert">
-  EM DESENVOLVIMENTO
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <a href="/milt/pix" class="btn-back"><i class="bi bi-caret-left-fill"></i>Voltar</a>
+    </div>
+    <div class="col-4">
+      <p class="text-header-pix-pay">Pagar Com Pix</p>
+
+    </div>
+  </div>
+  <div class="row pix">
+    <div class="col-4">
+      <i class="pay-pix bi bi-cash-coin"></i>
+    </div>
+  </div>
+
+  <div class="containerPixPayKey">
+    <div class="containerMessage">
+      {{#if messages.messageErrorPixPay}}
+      <div class="messageErro" id="errorDiv">
+        {{messages.messageErrorPixPay}}
+        <button class="btn-hide" id="hideButton">FECHAR</button>
+      </div>
+      {{/if}}
+    </div>
+    <p class="payPixChave">Chave</p>
+    <form action="/milt/pix/pagar" method="POST">
+      <input type="text" name="key" required placeholder="Insira a chave CPF ou Email">
+      <input class="btn-payPix" type="submit" value="CONTINUAR">
+    </form>
+  </div>
 </div>

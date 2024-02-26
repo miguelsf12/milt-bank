@@ -83,9 +83,22 @@ app.get('/', AuthController.welcome)
 app.get('/milt/home', HomeController.home)
 app.get('/login', AuthController.login)
 app.get('/milt/pix', HomeController.pix)
-app.get('/milt/pix/pagar',TransferController.pay)
-app.get('/milt/pix/registerKey',TransferController.registerKey)
-app.post('/milt/pix/registerKey',TransferController.registerKeyPost)
+
+app.get('/milt/pix/pagar', TransferController.pay)
+app.post('/milt/pix/pagar', TransferController.pixPay)
+
+
+
+app.get('/milt/pix/confirmarPagamento', TransferController.confirmPayment)
+app.post('/milt/pix/confirmarPagamento', TransferController.confirmPaymentPost)
+
+app.get('/milt/pix/revisao', TransferController.revision)
+app.post('/milt/pix/revisao', TransferController.revisionPost)
+
+app.get('/milt/pix/concluido', TransferController.concludedPay)
+
+app.get('/milt/pix/registerKey', TransferController.registerKey)
+app.post('/milt/pix/registerKey', TransferController.registerKeyPost)
 app.get('/reedem-password', AuthController.reedemPassword)
 app.get('/register', AuthController.register)
 app.post('/register', AuthController.registerPost)
@@ -93,17 +106,17 @@ app.post('/login', AuthController.loginPost)
 app.post('/reedem-password', AuthController.reedemPasswordPost)
 
 // LOCALHOST
-// conn
-//   // .sync({ force: true })
-//   .sync()
-//   .then(() => {
-//     app.listen(3000 || process.env.PORT)
-//   }).catch((err) => {
-//     console.log(err)
-//   })
+conn
+  // .sync({ force: true })
+  .sync()
+  .then(() => {
+    app.listen(3000 || process.env.PORT)
+  }).catch((err) => {
+    console.log(err)
+  })
 
 // RAILWAY
-sequelize.sync()
-app.listen(3000 || process.env.PORT, () => {
-  console.log('Conectado com sucesso')
-})
+// sequelize.sync()
+// app.listen(3000 || process.env.PORT, () => {
+//   console.log('Conectado com sucesso')
+// })
