@@ -1,6 +1,6 @@
 const User = require('../models/Users')
 const bcrypt = require('bcryptjs')
-const { badRequest, serverError } = require('../helpers/errorHandler')
+const { badRequest } = require('../helpers/errorHandler')
 
 module.exports = class AuthController {
   static welcome(req, res) {
@@ -58,7 +58,7 @@ module.exports = class AuthController {
       res.redirect('/login')
     } catch (error) {
       console.log(`Houve um erro: ${error}`);
-      return serverError(res);
+      return
     }
   }
 
@@ -91,7 +91,7 @@ module.exports = class AuthController {
       })
     } catch (error) {
       console.log(`Houve um erro: ${error}`);
-      return serverError(res);
+      return
     }
   }
 
@@ -116,7 +116,7 @@ module.exports = class AuthController {
       res.render('auth/login')
     } catch (error) {
       console.log(`Houve um erro: ${error}`);
-      return serverError(res);
+      return
     }
   }
 }

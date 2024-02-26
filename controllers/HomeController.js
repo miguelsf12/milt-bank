@@ -1,6 +1,5 @@
 const User = require("../models/Users")
 const Data = require("../models/Data")
-const { badRequest, serverError } = require('../helpers/errorHandler')
 
 module.exports = class HomeController {
   static async home(req, res) {
@@ -19,12 +18,12 @@ module.exports = class HomeController {
 
       const data = userDb.Datum
       const dataUser = data.dataValues
-      const amount = data.dataValues.amount
+      const amount = data.dataValues.amount.replace('.',',')
 
       res.render('milt/home', { layout: 'miltHome', username, amount })
     } catch (error) {
       console.log(`Houve um erro: ${error}`);
-      return serverError(res);
+      return
     }
   }
 
@@ -38,7 +37,7 @@ module.exports = class HomeController {
       res.render('milt/pix', { layout: 'miltHome', keyPix })
     } catch (error) {
       console.log(`Houve um erro: ${error}`);
-      return serverError(res);
+      return
     }
   }
 }

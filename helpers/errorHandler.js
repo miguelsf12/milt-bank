@@ -3,9 +3,8 @@ const badRequest = (req, res, message, flashKey, template, options) => {
   res.render(template, options);
 };
 
-const serverError = (res, message = 'Erro interno do servidor.', flashKey, template) => {
-  req.flash(flashKey, message);
-  res.render(template);
+const serverError = (res) => {
+  res.render(res);
 };
 
 module.exports = { badRequest, serverError };
